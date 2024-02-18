@@ -27,14 +27,12 @@ class UserController extends Controller
     }
 
     //create
-
     public function create()
     {
         return view('pages.users.create');
     }
 
     //store
-
     public function store(Request $request){
         //validate the request
         $request->validate([
@@ -56,15 +54,7 @@ class UserController extends Controller
 
     }
 
-    //show
-
-    /*public function show ($id)
-    {
-        return view(pages.users.show);
-    }*/
-
     //edit
-
     public function edit ($id)
     {
         $user = User::findOrFail($id);
@@ -72,8 +62,6 @@ class UserController extends Controller
     }
 
     //update
-
-
     public function update(Request $request, $id)
     {
 
@@ -87,9 +75,9 @@ class UserController extends Controller
 
         //update the request
         $user = User::find($id);
-        $user->name =$request->name;
-        $user->email =$request->email;
-        $user->role =$request->role;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
         $user->save();
 
         //if password is not empty
@@ -101,7 +89,7 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
 
-        //destroy
+    //destroy
 
         public function destroy($id)
         {
@@ -112,6 +100,13 @@ class UserController extends Controller
             return redirect()->route('users.index')->with('success', 'User deleted successfully');
         }
 
+
+//show
+
+    public function show ($id)
+    {
+        return view('pages.users.show');
+    }
 
 
 
