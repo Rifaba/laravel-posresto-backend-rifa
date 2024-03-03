@@ -44,10 +44,10 @@ class UserController extends Controller
 
         //store the request
         $user = new User;
-        $user->name =$request->name;
-        $user->email =$request->email;
-        $user->password =HASH::make($request->password);
-        $user->role =$request->role;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = HASH::make($request->password);
+        $user->role = $request->role;
         $user->save();
 
         return redirect()->route('users.index')->with('success', 'User updated successfully');

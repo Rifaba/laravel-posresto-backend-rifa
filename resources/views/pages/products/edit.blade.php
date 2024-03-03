@@ -30,7 +30,7 @@
 
 
                 <div class="card">
-                    <form action="{{ route('product.update', $product) }}" method="POST">
+                    <form action="{{ route('products.update', $product) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card-header">
@@ -56,7 +56,7 @@
                                 <input type="text"
                                     class="form-control @error('Description')
                                 is-invalid
-                            @enderror"
+                                @enderror"
                                     name="name" value="{{ $product->description }}">
                                 @error('description')
                                     <div class="invalid-feedback">
@@ -104,7 +104,6 @@
                                     </option>
                                     @endforeach
                                 </select>
-
                             </div>
 
                             <div class="form-group">
@@ -118,13 +117,36 @@
                                     <label class="selectgroup-item">
                                         <input type="radio" name="status" value="0"
                                         class="selectgroup-input" {{ $product->status == 0 ? 'checked' : ''}}>
-
                                         <span class="selectgroup-button">Inactive</span>
                                     </label>
                                 </div>
                             </div>
-                            
+
+                            <div class="form-group">
+                                <label class='form-label mt-4'>Photo Product</label>
+                                <div class="col-sm-9">
+                                        <input type="file" class="form-control" name="image"
+                                        @error('image') is-invalid @enderror>
+                                </div>
+                            </div>
+
+                       {{-- is favorite --}}
+                       <div class="form-group">
+                            <label class='form-label mt-4'>Is favorite</label>
+                            <div class="selectgroup selectgroup-pills">
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="is_favorite" value="1"
+                                    class="selectgroup-input" {{ $product->is_favorite == 1 ? 'checked' : ''}}>
+                                    <span class="selectgroup-button">Yes</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="radio" name="is_favorite" value="0"
+                                    class="selectgroup-input" {{ $product->is_favorite == 0 ? 'checked' : ''}}>
+                                    <span class="selectgroup-button">No</span>
+                                </label>
+                            </div>
                         </div>
+
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>
                         </div>

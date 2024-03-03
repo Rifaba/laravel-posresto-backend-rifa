@@ -54,7 +54,7 @@
                                 <input type="text"
                                     class="form-control @error('Description')
                                 is-invalid
-                            @enderror"
+                                @enderror"
                                     name="Description">
                                 @error('Description')
                                     <div class="invalid-feedback">
